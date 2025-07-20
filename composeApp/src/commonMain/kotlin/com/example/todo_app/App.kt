@@ -21,7 +21,7 @@ fun App() {
                 modifier = Modifier.padding(innerPadding).fillMaxSize(),
                 contentAlignment = Alignment.Center
             ){
-                Text("Hello World")
+                Text("Hello ${Greeting().greet()}")
             }
         }
     }
