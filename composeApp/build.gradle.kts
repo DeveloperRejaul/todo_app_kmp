@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -61,6 +62,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
+            val voyagerVersion = "1.1.0-beta02"
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -70,6 +73,15 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("br.com.devsrsouza.compose.icons:font-awesome:1.1.1")
+            implementation(libs.kotlinx.serialization.json)
+            // Navigator
+            implementation("cafe.adriel.voyager:voyager-navigator:${voyagerVersion}")
+            // Screen Model
+            implementation("cafe.adriel.voyager:voyager-screenmodel:${voyagerVersion}")
+            // Transitions
+            implementation("cafe.adriel.voyager:voyager-transitions:${voyagerVersion}")
+            // LiveData integration
+            implementation("cafe.adriel.voyager:voyager-livedata:${voyagerVersion}")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

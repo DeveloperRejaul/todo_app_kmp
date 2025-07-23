@@ -1,41 +1,44 @@
 package com.example.todo_app
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import com.example.todo_app.core.components.Input
-import com.example.todo_app.features.auth.Login
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
+import com.example.todo_app.core.theme.Typography
+import com.example.todo_app.features.auth.LoginScreen
 
+
+private val DarkColorScheme = darkColorScheme(
+    background = Color(0xFFFFFBFE),
+    surface = Color(0xFFFFFBFE),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onTertiary = Color.White,
+    onBackground = Color(0xFF1C1B1F),
+    onSurface = Color(0xFF1C1B1F),
+)
+
+private val LightColorScheme = lightColorScheme(
+    background = Color(0xFFFFFBFE),
+    surface = Color(0xFFFFFBFE),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onTertiary = Color.White,
+    onBackground = Color(0xFF1C1B1F),
+    onSurface = Color(0xFF1C1B1F),
+)
 
 @Composable
 fun App() {
-    MaterialTheme {
-        Login()
-//        Scaffold { innerPadding ->
-//            Box(
-//                modifier = Modifier.padding(innerPadding).fillMaxSize(),
-//                contentAlignment = Alignment.Center
-//            ){
-//                Input(
-//                    onChange = {},
-//                    value = "sdadf",
-//                    placeholder = "TODO()",
-//                    label = "TODO()",
-//                )
-//            }
-//        }
+    MaterialTheme (
+        colorScheme = LightColorScheme,
+        typography = Typography
+    ) {
+        Navigator(LoginScreen()) { navigator ->
+            SlideTransition(navigator)
+        }
     }
-}
-
-@Composable
-@Preview
-fun PApp () {
-    App()
 }
