@@ -37,7 +37,7 @@ fun App() {
         colorScheme = LightColorScheme,
         typography = Typography
     ) {
-        Navigator(LoginScreen()) { navigator ->
+        Navigator(LoginScreen(1)) { navigator ->
             SlideTransition(navigator)
         }
     }

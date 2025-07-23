@@ -29,7 +29,7 @@ import com.example.todo_app.core.components.Button
 
 
 
-class RegisterScreen(): Screen {
+data class RegisterScreen(val id: Int): Screen {
     @Composable
     override fun Content() {
         var userName by remember { mutableStateOf("") }

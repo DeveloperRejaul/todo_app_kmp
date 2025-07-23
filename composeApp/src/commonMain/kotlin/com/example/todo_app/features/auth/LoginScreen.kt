@@ -29,7 +29,7 @@ import com.example.todo_app.core.components.Input
 import com.example.todo_app.core.constance.InputVariant
 import com.example.todo_app.core.theme.Typography
 
-class LoginScreen(): Screen {
+data class LoginScreen(var  id : Int): Screen {
     @Composable
     override fun Content() {
         var userName by remember { mutableStateOf("") }
@@ -76,7 +76,7 @@ class LoginScreen(): Screen {
                 TextButton(
                     onClick = {
                         // navController.navigate(Routes.Register)
-                        navigator.push(RegisterScreen())
+                        navigator.push(RegisterScreen(2))
                     },
                     contentPadding = PaddingValues(0.dp)
                 ) {

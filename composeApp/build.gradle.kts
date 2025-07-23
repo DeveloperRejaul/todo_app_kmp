@@ -62,7 +62,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            val voyagerVersion = "1.1.0-beta02"
+            val voyagerVersion = "1.1.0-beta03"
 
             implementation(compose.runtime)
             implementation(compose.foundation)
