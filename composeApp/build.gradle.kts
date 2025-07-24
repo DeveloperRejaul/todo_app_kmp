@@ -60,9 +60,13 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.client.okhttp)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
         commonMain.dependencies {
-            val voyagerVersion = "1.1.0-beta03"
+            val voyagerVersion = "1.1.0-beta02"
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -76,12 +80,16 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             // Navigator
             implementation("cafe.adriel.voyager:voyager-navigator:${voyagerVersion}")
-            // Screen Model
-            implementation("cafe.adriel.voyager:voyager-screenmodel:${voyagerVersion}")
-            // Transitions
+            // navigation Transitions
             implementation("cafe.adriel.voyager:voyager-transitions:${voyagerVersion}")
-            // LiveData integration
-            implementation("cafe.adriel.voyager:voyager-livedata:${voyagerVersion}")
+
+            // view modal for compose
+            implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+            // for api request
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.contentNegotiation)
+            implementation(libs.ktor.serialization.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

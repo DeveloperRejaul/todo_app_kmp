@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -32,6 +33,7 @@ import com.example.todo_app.core.theme.Typography
 data class LoginScreen(var  id : Int): Screen {
     @Composable
     override fun Content() {
+        val authViewModal = viewModel { AuthViewModal() }
         var userName by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
 
@@ -65,6 +67,7 @@ data class LoginScreen(var  id : Int): Screen {
                 text = "Login",
                 onClick = {
                     // viewModal.login(userName = userName, password = password)
+                    authViewModal.login()
                 },
                 // isLoading = response.value === NetworkResponse.Loading
             )
