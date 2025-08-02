@@ -26,13 +26,13 @@ object MainScreen : Screen {
 
         when(authResult.value) {
             is NetworkResponse.Error -> {
-               navigator.push(LoginScreen)
+               navigator.replace(LoginScreen)
             }
             NetworkResponse.Loading -> {
                 ScreenCenterLoading()
             }
             is NetworkResponse.Success<*> -> {
-                navigator.push(HomeScreen)
+                navigator.replace(HomeScreen)
             }
             else -> Unit
         }

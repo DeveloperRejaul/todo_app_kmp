@@ -72,6 +72,10 @@ kotlin {
 
             // simple key value db
             implementation("com.liftric:kvault:1.12.0")
+
+            // koin
+            implementation("io.insert-koin:koin-core:3.5.3")
+            implementation("io.insert-koin:koin-compose:4.0.2")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

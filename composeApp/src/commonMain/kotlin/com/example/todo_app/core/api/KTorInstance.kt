@@ -26,4 +26,23 @@ object KTorInstance {
             accept(ContentType.Application.Json)
         }
     }
+
+
+
+    val client = HttpClient{
+        install(ContentNegotiation) {
+            json(
+                Json {
+                    ignoreUnknownKeys = true
+                    prettyPrint = true
+                    isLenient = true
+                }
+            )
+        }
+        defaultRequest{
+            url("https://jsonplaceholder.typicode.com")
+            contentType(ContentType.Application.Json)
+            accept(ContentType.Application.Json)
+        }
+    }
 }
