@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,18 +25,21 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.example.todo_app.core.api.NetworkResponse
 import com.example.todo_app.core.components.Button
 import com.example.todo_app.core.components.Container
 import com.example.todo_app.core.components.Input
 import com.example.todo_app.core.constance.InputVariant
 import com.example.todo_app.core.theme.Typography
 
-data class LoginScreen(var  id : Int): Screen {
+object  LoginScreen: Screen {
     @Composable
     override fun Content() {
         val authViewModal = viewModel { AuthViewModal() }
         var userName by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
+
+        val loginResult = authViewModal.loginResult.collectAsState()
 
         val navigator = LocalNavigator.currentOrThrow
 
@@ -66,10 +70,9 @@ data class LoginScreen(var  id : Int): Screen {
             Button(
                 text = "Login",
                 onClick = {
-                    // viewModal.login(userName = userName, password = password)
-                    authViewModal.login()
+                    authViewModal.login(userName, password)
                 },
-                // isLoading = response.value === NetworkResponse.Loading
+                isLoading = loginResult.value === NetworkResponse.Loading
             )
             Row(
                 modifier = Modifier.padding(top = 16.dp),
@@ -78,8 +81,7 @@ data class LoginScreen(var  id : Int): Screen {
                 Text("You don't have an account? ", style = Typography.bodyMedium)
                 TextButton(
                     onClick = {
-                        // navController.navigate(Routes.Register)
-                        navigator.push(RegisterScreen(2))
+                        navigator.push(RegisterScreen)
                     },
                     contentPadding = PaddingValues(0.dp)
                 ) {

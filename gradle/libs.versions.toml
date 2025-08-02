@@ -13,11 +13,12 @@ androidx-testExt = "1.2.1"
 composeHotReload = "1.0.0-alpha11"
 composeMultiplatform = "1.8.2"
 junit = "4.13.2"
-kotlin = "2.2.0"
+
 kotlinx-coroutines = "1.10.2"
 serialization = "1.7.3"
 ktor = "3.2.2"
 
+kotlin = "2.2.0"
 
 
 [libraries]
@@ -42,7 +43,6 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-contentNegotiation = {module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor"}
 ktor-serialization-json = {module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor"}
-
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

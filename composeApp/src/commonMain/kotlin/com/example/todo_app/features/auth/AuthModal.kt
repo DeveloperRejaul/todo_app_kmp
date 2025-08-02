@@ -10,3 +10,20 @@ data class AuthModal(
     val title: String,
     val body: String
 )
+
+
+@Serializable
+data class LoginBody (var username:String, val password: String, val expiresInMins: Int)
+
+@Serializable
+data class AuthLoginModal (
+    val id: Int,
+    val accessToken: String,
+    val refreshToken: String,
+    val username: String,
+    val email: String,
+    val firstName: String,
+    val lastName: String,
+    val gender: String,
+    val image: String,
+)

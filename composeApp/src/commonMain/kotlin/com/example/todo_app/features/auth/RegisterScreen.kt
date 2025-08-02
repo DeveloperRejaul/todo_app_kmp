@@ -21,15 +21,14 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.example.todo_app.core.components.Button
 import com.example.todo_app.core.components.Container
 import com.example.todo_app.core.components.Input
 import com.example.todo_app.core.constance.InputVariant
 import com.example.todo_app.core.theme.Typography
-import com.example.todo_app.core.components.Button
 
 
-
-data class RegisterScreen(val id: Int): Screen {
+object RegisterScreen: Screen {
     @Composable
     override fun Content() {
         var userName by remember { mutableStateOf("") }

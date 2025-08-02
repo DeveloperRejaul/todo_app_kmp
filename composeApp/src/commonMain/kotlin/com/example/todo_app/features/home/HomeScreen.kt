@@ -9,7 +9,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.todo_app.core.components.Button
 
 
-class HomeScreen (): Screen{
+object HomeScreen: Screen{
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
